@@ -1,0 +1,6 @@
+@projetoPizza_HostAddress = http://localhost:5152
+
+GET {{projetoPizza_HostAddress}}/api/v2/get/
+Accept: application/json
+
+###
