@@ -8,5 +8,5 @@
 Antes tarde do que nunca
 
 Print sanguinário do teste de performance gatling. Isso é culpa do docker rodando em modo bridge e windows não suporta modo host
-<img src="https://imgur.com/a/zszz9uI" alt="teste gatling">
+<img src="https://i.imgur.com/dbSqvw3.png" alt="teste gatling">
 
