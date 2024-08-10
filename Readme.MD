@@ -1,8 +1,11 @@
 # Projeto Pizza
-### Minha participaÁ„o pra rinha de back-end de 2023
+### Minha participa√ß√£o pra rinha de back-end de 2023
 
 ## Por que esse nome de projeto?
-### Porque o inÌcio do projeto era uma coisa, que mudou do nada o propÛsito, conviva com isso.
+### Porque o in√≠cio do projeto era uma coisa, que mudou do nada o prop√≥sito, conviva com isso.
 
-### VocÍ est· meio atrasado
+### Voc√™ est√° meio atrasado
 Antes tarde do que nunca
+
+Print sanguin√°rio do gatling. Isso √© culpa do docker rodando em modo bridge e windows n√£o suporta modo host
+https://imgur.com/a/zszz9uI
