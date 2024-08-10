@@ -16,7 +16,12 @@
       "launchUrl": "",
       "applicationUrl": "http://localhost:5152",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_HOST": "localhost",
+        "DB_USER": "pizzaiolo",
+        "DB_PASSWORD": "pizzaPassword",
+        "DB_PORT": "5435",
+        "DB_NAME": "pizza"
       }
     },
     "IIS Express": {

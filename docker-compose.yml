@@ -1,0 +1,67 @@
+services:
+  api01: &api
+    image: slyte/projetopizza:1.0
+    hostname: api01
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_HTTP_PORTS=3001
+      - DB_HOST=host.docker.internal
+      - DB_USER=pizzaiolo
+      - DB_PASSWORD=pizzaPassword
+      - DB_PORT=5435
+      - DB_NAME=pizza
+    ports:
+      - "3001:3001"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "50MB"
+  api02:
+    <<: *api
+    hostname: api02
+    environment:
+      - ASPNETCORE_HTTP_PORTS=3002
+      - DB_HOST=host.docker.internal
+      - DB_USER=pizzaiolo
+      - DB_PASSWORD=pizzaPassword
+      - DB_PORT=5435
+      - DB_NAME=pizza
+    ports:
+      - "3002:3002"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api01
+      - api02
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "10MB"
+  db:
+    image: postgres:latest
+    hostname: db
+    environment:
+      - POSTGRES_PASSWORD=pizzaPassword
+      - POSTGRES_USER=pizzaiolo
+      - POSTGRES_DB=pizza
+    ports:
+      - "5435:5435"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres -c checkpoint_timeout=600 -c max_wal_size=4096 -p 5435
+    deploy:
+      resources:
+        limits:
+          cpus: "0.45"
+          memory: "140MB"
+networks:
+  default:
+    driver: bridge
+    name: projeto-pizza-network

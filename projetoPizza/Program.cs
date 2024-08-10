@@ -1,19 +1,26 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using projetoPizza.Configuration;
 using projetoPizza.Controllers;
+using projetoPizza.Domain.Config;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
-builder.Services.ConfigureApiVersioning();
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").AddJsonFile("appsettings.Development.json", true).AddEnvironmentVariables();
+builder.Services.Configure<SystemConfiguration>(builder.Configuration);
 builder.Services.ConfigureDependencyInjection();
+builder.Services.Configure<JsonSerializerSettings>(options =>
+{
+    options.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    options.Converters.Add(
+        new StringEnumConverter
+        {
+            NamingStrategy = new Newtonsoft.Json.Serialization.CamelCaseNamingStrategy()
+        });
+});
 
 var app = builder.Build();
 
-app.Services.GetRequiredService<LoginController>().Map(app);
+app.Services.GetRequiredService<PeopleController>().Map(app);
+app.Services.GetRequiredService<PeopleDataController>().Map(app);
 
-if (app.Environment.IsDevelopment())
-{
-    app.ConfigureSwagger();
-}
-
-app.Run();
+await app.RunAsync();
