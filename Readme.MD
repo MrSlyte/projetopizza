@@ -7,5 +7,6 @@
 ### Você está meio atrasado
 Antes tarde do que nunca
 
-Print sanguinário do gatling. Isso é culpa do docker rodando em modo bridge e windows não suporta modo host
-https://imgur.com/a/zszz9uI
+Print sanguinário do teste de performance gatling. Isso é culpa do docker rodando em modo bridge e windows não suporta modo host
+<img src="https://imgur.com/a/zszz9uI" alt="teste gatling">
+
