@@ -20,7 +20,7 @@
         "DB_HOST": "localhost",
         "DB_USER": "pizzaiolo",
         "DB_PASSWORD": "pizzaPassword",
-        "DB_PORT": "5435",
+        "DB_PORT": "5434",
         "DB_NAME": "pizza"
       }
     },
